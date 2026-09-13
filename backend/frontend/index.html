@@ -1,0 +1,209 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BookNest | Online Bookstore</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+        <div class="logo">
+            📚 <span>BookNest</span>
+        </div>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for books, authors..."
+            >
+
+            <button onclick="searchBooks()">🔍</button>
+        </div>
+
+        <button class="cart-button" onclick="toggleCart()">
+            🛒 Cart
+            <span id="cart-count">0</span>
+        </button>
+
+    </nav>
+
+
+    <!-- CATEGORY BAR -->
+    <div class="category-bar">
+
+        <button
+            class="category-btn active"
+            onclick="filterCategory('All')">
+            All Books
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Fiction')">
+            Stories
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Self Help')">
+            Personal Growth
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Biography')">
+            Life Stories
+        </button>
+
+        <button
+            class="category-btn"
+            onclick="filterCategory('Programming')">
+            Computer Books
+        </button>
+
+    </div>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+
+        <div>
+
+            <h1>
+                Discover Your Next Favorite Book 📖
+            </h1>
+
+            <p>
+                Explore great books and find something you will love to read.
+            </p>
+
+            <button onclick="scrollToBooks()">
+                Browse Books
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- BOOK SECTION -->
+    <main>
+
+        <div class="section-heading">
+
+            <div>
+
+                <h2>Popular Books</h2>
+
+                <p>
+                    Choose from our collection of books
+                </p>
+
+            </div>
+
+            <span id="book-count"></span>
+
+        </div>
+
+
+        <!-- BOOK CARDS -->
+        <div id="book-list">
+            Loading books...
+        </div>
+
+    </main>
+
+
+    <!-- CART OVERLAY -->
+    <div
+        id="cart-overlay"
+        onclick="toggleCart()">
+    </div>
+
+
+    <!-- CART PANEL -->
+    <aside id="cart-panel">
+
+        <div class="cart-header">
+
+            <h2>🛒 My Cart</h2>
+
+            <button
+                onclick="toggleCart()"
+                class="close-cart">
+                ✕
+            </button>
+
+        </div>
+
+
+        <!-- CART ITEMS -->
+        <div id="cart-items">
+
+            <p class="empty-cart">
+                Your cart is empty.
+            </p>
+
+        </div>
+
+
+        <!-- CART TOTAL -->
+        <div class="cart-footer">
+
+            <div class="total-row">
+
+                <span>
+                    Total Amount
+                </span>
+
+                <strong id="cart-total">
+                    ₹0.00
+                </strong>
+
+            </div>
+
+            <button
+                class="checkout-btn"
+                onclick="checkout()">
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>
+            📚 BookNest
+        </h3>
+
+        <p>
+            Your simple and trusted online bookstore.
+        </p>
+
+        <p class="copyright">
+            © 2026 BookNest. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+```
