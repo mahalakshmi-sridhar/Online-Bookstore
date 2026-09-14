@@ -12,7 +12,7 @@ let selectedCategory = "All";
 
 // ================= LOAD BOOKS =================
 
-fetch("http://localhost:5000/api/books")
+fetch("https://online-bookstore-backend-lbxk.onrender.com/api/books")
     .then(response => response.json())
     .then(data => {
 
