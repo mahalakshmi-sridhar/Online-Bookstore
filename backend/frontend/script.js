@@ -1,5 +1,5 @@
 const API_URL =
-    "http://localhost:5000/api/books";
+    "https://online-bookstore-backend-lbxk.onrender.com/api/books";
 
 const authScreen = document.getElementById("auth-screen");
 const storeScreen = document.getElementById("store-screen");
