@@ -1,122 +1,410 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BookNest | Online Bookstore</title>
+```
+<title>BookNest | Online Bookstore</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+```
+<!-- =====================================================
+     LOGIN / REGISTER SCREEN
+     ===================================================== -->
+
+<section id="auth-screen">
+
+    <div class="auth-container">
+
+        <div class="auth-box">
+
+            <!-- LOGO -->
+
+            <div class="auth-logo">
+                📚
+            </div>
+
+            <h1>BookNest</h1>
+
+            <p class="subtitle">
+                Your online bookstore
+            </p>
+
+
+            <!-- =================================================
+                 LOGIN
+                 ================================================= -->
+
+            <div id="login-section">
+
+                <h2>Welcome Back 👋</h2>
+
+                <p class="auth-description">
+                    Login to continue shopping
+                </p>
+
+
+                <!-- EMAIL -->
+
+                <input
+                    type="email"
+                    id="login-email"
+                    placeholder="Email address"
+                    autocomplete="email"
+                >
+
+
+                <!-- PASSWORD -->
+
+                <input
+                    type="password"
+                    id="login-password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                >
+
+
+                <!-- ERROR MESSAGE -->
+
+                <p
+                    id="login-error"
+                    class="form-error"
+                ></p>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="button"
+                    class="auth-button"
+                    onclick="loginUser()"
+                >
+                    Login
+                </button>
+
+
+                <!-- REGISTER LINK -->
+
+                <p class="auth-switch">
+
+                    New to BookNest?
+
+                    <button
+                        type="button"
+                        onclick="showRegister()"
+                    >
+                        Create Account
+                    </button>
+
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 REGISTER
+                 ================================================= -->
+
+            <div
+                id="register-section"
+                class="hidden"
+            >
+
+                <h2>Create Account 📝</h2>
+
+                <p class="auth-description">
+                    Join BookNest today
+                </p>
+
+
+                <!-- NAME -->
+
+                <input
+                    type="text"
+                    id="register-name"
+                    placeholder="Full name"
+                    autocomplete="name"
+                >
+
+
+                <!-- EMAIL -->
+
+                <input
+                    type="email"
+                    id="register-email"
+                    placeholder="Email address"
+                    autocomplete="email"
+                >
+
+
+                <!-- PASSWORD -->
+
+                <input
+                    type="password"
+                    id="register-password"
+                    placeholder="Password"
+                    autocomplete="new-password"
+                >
+
+
+                <!-- PASSWORD RULE -->
+
+                <p class="password-hint">
+                    Password must contain at least 8 characters
+                    and 1 special character.
+                </p>
+
+
+                <!-- ERROR MESSAGE -->
+
+                <p
+                    id="register-error"
+                    class="form-error"
+                ></p>
+
+
+                <!-- REGISTER BUTTON -->
+
+                <button
+                    type="button"
+                    class="auth-button"
+                    onclick="registerUser()"
+                >
+                    Create Account
+                </button>
+
+
+                <!-- LOGIN LINK -->
+
+                <p class="auth-switch">
+
+                    Already have an account?
+
+                    <button
+                        type="button"
+                        onclick="showLogin()"
+                    >
+                        Login
+                    </button>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BOOKSTORE
+     ===================================================== -->
+
+<div
+    id="store-screen"
+    class="hidden"
+>
+
+    <!-- =================================================
+         NAVBAR
+         ================================================= -->
+
     <nav class="navbar">
 
         <div class="logo">
             📚 <span>BookNest</span>
         </div>
 
+
+        <!-- SEARCH -->
+
         <div class="search-box">
+
             <input
                 type="text"
                 id="searchInput"
-                placeholder="Search for books, authors..."
+                placeholder="Search books, authors..."
             >
 
-            <button onclick="searchBooks()">🔍</button>
+            <button
+                type="button"
+                onclick="searchBooks()"
+            >
+                🔍
+            </button>
+
         </div>
 
-        <button class="cart-button" onclick="toggleCart()">
-            🛒 Cart
-            <span id="cart-count">0</span>
-        </button>
+
+        <!-- NAV ACTIONS -->
+
+        <div class="nav-actions">
+
+            <span id="welcome-user">
+                Welcome
+            </span>
+
+
+            <button
+                type="button"
+                class="logout-btn"
+                onclick="logoutUser()"
+            >
+                🚪 Logout
+            </button>
+
+
+            <button
+                type="button"
+                class="cart-button"
+                onclick="toggleCart()"
+            >
+
+                🛒 Cart
+
+                <span id="cart-count">
+                    0
+                </span>
+
+            </button>
+
+        </div>
 
     </nav>
 
 
-    <!-- CATEGORY BAR -->
+    <!-- =================================================
+         CATEGORY BAR
+         ================================================= -->
+
     <div class="category-bar">
 
         <button
+            type="button"
             class="category-btn active"
-            onclick="filterCategory('All')">
+            onclick="filterCategory('All', this)"
+        >
             All Books
         </button>
 
         <button
+            type="button"
             class="category-btn"
-            onclick="filterCategory('Fiction')">
-            Stories
+            onclick="filterCategory('Fiction', this)"
+        >
+            📖 Stories
         </button>
 
         <button
+            type="button"
             class="category-btn"
-            onclick="filterCategory('Self Help')">
-            Personal Growth
+            onclick="filterCategory('Self Help', this)"
+        >
+            🌱 Personal Growth
         </button>
 
         <button
+            type="button"
             class="category-btn"
-            onclick="filterCategory('Biography')">
-            Life Stories
+            onclick="filterCategory('Biography', this)"
+        >
+            👤 Life Stories
         </button>
 
         <button
+            type="button"
             class="category-btn"
-            onclick="filterCategory('Programming')">
-            Computer Books
+            onclick="filterCategory('Programming', this)"
+        >
+            💻 Computer Books
         </button>
 
     </div>
 
 
-    <!-- HERO SECTION -->
+    <!-- =================================================
+         HERO
+         ================================================= -->
+
     <section class="hero">
 
-        <div>
+        <div class="hero-content">
+
+            <span class="hero-tag">
+                📚 BOOKNEST COLLECTION
+            </span>
 
             <h1>
-                Discover Your Next Favorite Book 📖
+                Discover Your Next
+                <span>Favorite Book</span>
             </h1>
 
             <p>
-                Explore great books and find something you will love to read.
+                Explore inspiring stories, personal growth,
+                biographies and programming books.
             </p>
 
-            <button onclick="scrollToBooks()">
-                Browse Books
+            <button
+                type="button"
+                class="hero-btn"
+                onclick="scrollToBooks()"
+            >
+                Browse Books →
             </button>
 
+        </div>
+
+
+        <div class="hero-icon">
+            📖
         </div>
 
     </section>
 
 
-    <!-- BOOK SECTION -->
-    <main>
+    <!-- =================================================
+         BOOK COLLECTION
+         ================================================= -->
+
+    <main id="books-section">
 
         <div class="section-heading">
 
             <div>
 
-                <h2>Popular Books</h2>
+                <span class="section-label">
+                    OUR COLLECTION
+                </span>
+
+                <h2>
+                    Popular Books
+                </h2>
 
                 <p>
-                    Choose from our collection of books
+                    Choose your next book from our collection.
                 </p>
 
             </div>
 
-            <span id="book-count"></span>
+
+            <span id="book-count">
+                0 books
+            </span>
 
         </div>
 
 
-        <!-- BOOK CARDS -->
         <div id="book-list">
             Loading books...
         </div>
@@ -124,23 +412,42 @@
     </main>
 
 
-    <!-- CART OVERLAY -->
+    <!-- =================================================
+         CART OVERLAY
+         ================================================= -->
+
     <div
         id="cart-overlay"
-        onclick="toggleCart()">
-    </div>
+        onclick="toggleCart()"
+    ></div>
 
 
-    <!-- CART PANEL -->
+    <!-- =================================================
+         CART PANEL
+         ================================================= -->
+
     <aside id="cart-panel">
 
         <div class="cart-header">
 
-            <h2>🛒 My Cart</h2>
+            <div>
+
+                <span class="cart-small">
+                    YOUR SHOPPING CART
+                </span>
+
+                <h2>
+                    🛒 My Cart
+                </h2>
+
+            </div>
+
 
             <button
+                type="button"
+                class="close-cart"
                 onclick="toggleCart()"
-                class="close-cart">
+            >
                 ✕
             </button>
 
@@ -148,16 +455,18 @@
 
 
         <!-- CART ITEMS -->
+
         <div id="cart-items">
 
             <p class="empty-cart">
-                Your cart is empty.
+                🛒 Your cart is empty.
             </p>
 
         </div>
 
 
-        <!-- CART TOTAL -->
+        <!-- CART FOOTER -->
+
         <div class="cart-footer">
 
             <div class="total-row">
@@ -172,10 +481,13 @@
 
             </div>
 
+
             <button
+                type="button"
                 class="checkout-btn"
-                onclick="checkout()">
-                Proceed to Checkout
+                onclick="checkout()"
+            >
+                Proceed to Checkout →
             </button>
 
         </div>
@@ -183,7 +495,148 @@
     </aside>
 
 
-    <!-- FOOTER -->
+    <!-- =================================================
+         CHECKOUT MODAL
+         ================================================= -->
+
+    <div
+        id="checkout-modal"
+        class="login-modal"
+    >
+
+        <div class="login-box checkout-box">
+
+            <!-- CLOSE -->
+
+            <button
+                type="button"
+                class="login-close"
+                onclick="closeCheckout()"
+            >
+                ✕
+            </button>
+
+
+            <!-- ICON -->
+
+            <div class="modal-icon">
+                💳
+            </div>
+
+
+            <h2>
+                Checkout
+            </h2>
+
+            <p>
+                Enter your delivery details
+            </p>
+
+
+            <!-- CUSTOMER NAME -->
+
+            <input
+                type="text"
+                id="customer-name"
+                placeholder="Full Name"
+                autocomplete="name"
+            >
+
+
+            <!-- PHONE -->
+
+            <input
+                type="tel"
+                id="customer-phone"
+                placeholder="Phone Number"
+                autocomplete="tel"
+            >
+
+
+            <!-- ADDRESS -->
+
+            <textarea
+                id="customer-address"
+                placeholder="Delivery Address"
+                rows="5"
+            ></textarea>
+
+
+            <!-- TOTAL -->
+
+            <div class="checkout-summary">
+
+                <span>
+                    Total Amount
+                </span>
+
+                <strong id="checkout-total">
+                    ₹0.00
+                </strong>
+
+            </div>
+
+
+            <!-- PLACE ORDER -->
+
+            <button
+                type="button"
+                class="login-submit"
+                onclick="placeOrder()"
+            >
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ORDER SUCCESS
+         ================================================= -->
+
+    <div
+        id="success-modal"
+        class="login-modal"
+    >
+
+        <div class="login-box success-card">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                Order Placed!
+            </h2>
+
+            <p>
+                Thank you for shopping with BookNest.
+            </p>
+
+            <p>
+                Your order has been received successfully.
+            </p>
+
+
+            <button
+                type="button"
+                class="login-submit"
+                onclick="closeSuccess()"
+            >
+                Continue Shopping
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         FOOTER
+         ================================================= -->
+
     <footer>
 
         <h3>
@@ -200,10 +653,16 @@
 
     </footer>
 
+</div>
 
-    <script src="script.js"></script>
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="script.js"></script>
+```
 
 </body>
 
 </html>
-```
